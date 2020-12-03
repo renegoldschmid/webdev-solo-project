@@ -1,0 +1,112 @@
+/* General */
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: rgb(53, 66, 80);
+}
+
+/* Navigation */
+.navigation-wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    height: 70px;
+    padding: 10px 10px;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 50px;
+}
+
+nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #708090;
+}
+
+nav ul {
+    list-style-type: none;
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+nav ul li {
+    padding: 0 1em;
+}
+
+nav ul li a {
+    display: inline-block;
+    font-size: 1em;
+    color: #fffafa;
+    text-decoration: none;
+    letter-spacing: 1px;
+    padding: 1em;
+    transition: all 0.5s;
+}
+
+nav ul li a:hover, 
+nav ul li a:focus {
+    color: #aaaaaa;
+}
+
+nav ul li a.active {
+    font-weight: 700;
+}
+
+/* Menu Icon (Burger) */
+.menu-icon {
+    margin: 4px 10px;
+    cursor: pointer;
+}
+
+.line {
+    width: 32px;
+    height: 4px;
+    margin: 7px 0;
+    background-color: #fffafa;
+}
+
+#show-menu {
+    display: none;
+}
+
+#show-menu:checked ~ nav ul {
+    max-height: 250px;
+    padding: 1em 0;
+}
+
+/* Content */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1em 2em;
+}
+
+/* Footer */
+footer {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    padding: 1em 0em;
+    color: #fffafa;
+    background-color: #708090;
+    text-align: center;
+}
