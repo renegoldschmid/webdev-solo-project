@@ -19,6 +19,61 @@ header {
     background-color: rgb(53, 66, 80);
 }
 
+.heading {
+    text-align: center;
+    font-size: 3em;
+    font-weight: 700;
+    padding: 0.5em 0em;
+}
+
+.sub-heading {
+    font-weight: 500;
+    padding: 0.5em 0em;
+}
+
+.fa-heart {
+    color: rgb(204, 37, 37);
+}
+
+.header {
+    text-align: center;
+    padding: 1em 0;
+}
+
+.title-image {
+    width: 50%;
+}
+
+.btn {
+    width: 100px;
+    height: 30px;
+    margin: 1em 0.2em;
+    border: 2px solid rgb(53, 66, 80);
+    color: #fffafa;
+    background-color: #708090;
+}
+
+.btn:hover {
+    background-color: rgb(53, 66, 80);
+    cursor: pointer;
+}
+
+.btn:active {
+    background-color: rgb(28, 36, 44);
+}
+
+.btn-list {
+    margin: 0;
+    margin-left: 1em;
+    min-width: 100px;
+}
+
+#loading {
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #708090;
+}
+
 /* Navigation */
 .navigation-wrapper {
     display: flex;
@@ -100,13 +155,33 @@ main {
     padding: 1em 2em;
 }
 
+.list {
+    list-style-type: none;
+}
+
+.list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7em 1em;
+    margin: 0.7em 0;
+    border: 2px solid;
+    border-radius: 10px;
+    background-color: rgb(213, 224, 233);
+}
+
 /* Footer */
 footer {
-    bottom: 0;
     position: fixed;
+    bottom: 0;
+    height: 50px; /* If changed, also change pushFooter-Element */
+    line-height: 50px;
     width: 100%;
-    padding: 1em 0em;
+    text-align: center;
     color: #fffafa;
     background-color: #708090;
-    text-align: center;
+}
+
+#pushFooter {
+    margin-bottom: 50px; /* Equals height of footer */
 }

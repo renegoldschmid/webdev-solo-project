@@ -8,11 +8,12 @@
     <!-- Load Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet">
 
     <!-- Load Stylesheets -->
     <link href="assets/stylesheets/main.css" rel="stylesheet" type="text/css">
     <link href="assets/stylesheets/responsive.css" rel="stylesheet" type="text/css">
+    <link href="assets/stylesheets/tooltips.css" rel="stylesheet" type="text/css">
+    <script src="https://kit.fontawesome.com/6d1ab91439.js" crossorigin="anonymous"></script>
 
     <!-- Page Title -->
     <title>My Solo Project</title>
@@ -46,15 +47,51 @@
     
     <!-- Page Content -->
     <main>
-        <h1>Hello Home!</h1>
+        <div class="header">
+            <img class="title-image" src="assets/images/the_simpsons_logo.png" alt="The Simpsons Logo" />
+        </div>
+        
+        <h1 class="heading">Quote Viewer</h1>
+        <p><strong>How it works:</strong> First, set an amount of quotes you want to fetch per request (= per click). You can fetch as often you want! Then select your favorite quotes. If things get messy, clear the list and fetch some new quotes. Have fun!</p>
+        <br />
+        <label for="qoutes-count">Amount (1-10): </label>
+        <input type="number" id="quotes-count" name="quotes-count" min="1" max="10" value="5" />
+        <br />
+        <button class="btn" id="fetchDataBtn" aria-describedby="tooltip">Get Quotes!</button>
+        <div id="tooltip" role="tooltip">
+            Give it a try!
+            <div id="arrow" data-popper-arrow></div>
+        </div>
+
+        <button class="btn" id="clearDataBtn">Clear</button>
+        <section>
+            <div>
+                <h2 class="sub-heading">The Quotes List <i class="far fa-list-alt"></i></h2>
+                <span id="loading"></span>
+                <ul id="quotes-list" class="list"></ul>
+            </div>
+            <div>
+                <h2 class="sub-heading">Your Favorites <i class="fas fa-heart"></i></h2>
+                <ul id="favorites-list" class="list"></ul>
+            </div>
+        </section>
     </main>
     
+    <div id="pushFooter"></div>
     <!-- Footer -->
     <footer>
         <p>Copyright 2020 René Goldschmid. All rights reserved.</p>
     </footer>
 
     <!-- Load Scripts -->
-    <script src="assets/javascript/main.js" type="module"></script>
+
+    <!-- Popper.js -->
+    <!-- Development version -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    <!-- Production version -->
+    <!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
+
+    <!-- Custom Scripts -->
+    <script src="assets/javascript/main.js" type="module" async defer></script>
 </body>
 </html>
