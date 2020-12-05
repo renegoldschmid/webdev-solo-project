@@ -159,7 +159,7 @@ var app = (function() {
     }
 }());
 
-if (title === 'app') {
+if (title === 'contents') {
     document.getElementById("fetchDataBtn").addEventListener('click', function() {
         app.fetchDataFromApi();
     });
