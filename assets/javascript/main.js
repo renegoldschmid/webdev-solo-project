@@ -1,6 +1,27 @@
 console.log('René Goldschmid, Solo Web Engineering Project - Version 1.0');
 
-import { toggleIsLoading } from './support.js';
+import { toggleIsLoading, registerTooltip, validateForm } from './support.js';
+import Tooltip from './tooltip.js';
+
+/*
+## Example of the Data returned by the Api (With count = 2)
+
+[
+    {
+        character: "Troy McClure"
+        characterDirection: "Right"
+        image: "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FTroyMcClure.png?1497567511112"
+        quote: "Ahh! Sweet liquor eases the pain."
+    },
+    {
+        character: "Bart Simpson"
+        characterDirection: "Right"
+        image: "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FBartSimpson.png?1497567511638"
+        quote: "Nothing you say can upset us. We're the MTV generation."
+    }
+]
+
+*/
 
 var app = (function() {
     'use strict';
@@ -14,7 +35,7 @@ var app = (function() {
         if (!isLoading) {
             isLoading = toggleIsLoading(isLoading);
 
-            // Ajax call with fetch API
+            // Fetching data asynchronously using the fetch API
             fetch(URL)
                 .then(function(response) {
                     if(response.status !== 200){
@@ -22,17 +43,17 @@ var app = (function() {
                         isLoading = toggleIsLoading(isLoading);
                         return;
                     }
-                    return response.json();//  Get the text in the response
+                    return response.json();
                 })
                 .then(function(responseData) {
                     console.log('Request successful');
                     isLoading = toggleIsLoading(isLoading);
+                    console.log(responseData);
                     _processData(responseData);
                 })
                 .catch(function(error) {
                     console.log('Request failed', error)
                     isLoading = toggleIsLoading(isLoading);
-                    // do something with error message
                 });
         }
     }
@@ -55,15 +76,22 @@ var app = (function() {
 
         for (let quoteObj of data) {
             let li = document.createElement("li");
+            let textContainer = document.createElement("div");
+            let btnContainer = document.createElement("div");
             let btn = document.createElement("button");
 
-            li.textContent = quoteObj.quote + ' - ' + quoteObj.character;
+            textContainer.classList.add("text-container");
+            textContainer.textContent = quoteObj.quote + ' - ' + quoteObj.character;
+            btnContainer.classList.add("button-container");
+
             btn.textContent = "Add";
             btn.classList.add("btn", "btn-list");
-            btn.addEventListener("click", function(){ _addToFavorites(this.closest("li")); });
+            btn.addEventListener("click", function(){ _addToFavorites(this.closest("li"), quoteObj); });
 
             quotesList.append(li);
-            li.append(btn);
+            btnContainer.append(btn);
+            li.append(textContainer);
+            li.append(btnContainer);
         }
 
         let fetchBtn = document.getElementById("fetchDataBtn");
@@ -71,7 +99,7 @@ var app = (function() {
     }
 
     // Add an item to the favorites list
-    let _addToFavorites = function(listItem) {
+    let _addToFavorites = function(listItem, quoteObj) {
         let favoritesList = document.getElementById("favorites-list");
 
         let clonedListItem = listItem.cloneNode(true);
@@ -82,6 +110,41 @@ var app = (function() {
 
         favoritesList.append(clonedListItem);
         listItem.remove();
+
+        // Add Detail Button
+        let detailBtn = document.createElement("button");
+        detailBtn.textContent = "Details";
+        detailBtn.classList.add("btn", "btn-list");
+        let btnContainer = clonedListItem.getElementsByClassName('button-container')[0];
+        btnContainer.append(detailBtn);
+
+        // Add Tooltip
+        let tooltipContainer = document.createElement("div");
+        tooltipContainer.classList.add("tooltip");
+        clonedListItem.append(tooltipContainer);
+
+        // Add Arrow
+        let arrow = document.createElement("div");
+        arrow.classList.add("arrow");
+        arrow.setAttribute("data-popper-arrow", '');
+        tooltipContainer.append(arrow);
+
+        // Get Image
+        let image = document.createElement("img");
+        image.src = quoteObj.image;
+        image.alt = quoteObj.character;
+        image.classList.add("detail-tooltip-image");
+        tooltipContainer.append(image);
+
+        // Get Character
+        let character = document.createElement("p");
+        character.textContent = quoteObj.character;
+        character.classList.add("detail-tooltip-character");
+        tooltipContainer.append(character);
+
+        // Register Tooltip
+        let tooltip = new Tooltip(detailBtn, tooltipContainer, 'right');
+        registerTooltip(tooltip);
     }
 
     // Remove an item from the favorites list
@@ -96,10 +159,30 @@ var app = (function() {
     }
 }());
 
-document.getElementById("fetchDataBtn").addEventListener('click', function() {
-    app.fetchDataFromApi();
-});
+if (title === 'app') {
+    document.getElementById("fetchDataBtn").addEventListener('click', function() {
+        app.fetchDataFromApi();
+    });
+    
+    document.getElementById("clearDataBtn").addEventListener('click', function() {
+        app.clearQuotesList();
+    });
 
-document.getElementById("clearDataBtn").addEventListener('click', function() {
-    app.clearQuotesList();
-});
+    const button = document.querySelector('#fetchDataBtn');
+    const tooltip = document.querySelector('#tooltip');
+    let tool1 = new Tooltip(button, tooltip);
+    registerTooltip(tool1);
+
+    const button2 = document.querySelector('#clearDataBtn');
+    const tooltip2 = document.querySelector('#tooltip2');
+    let tool2 = new Tooltip(button2, tooltip2, 'right');
+    registerTooltip(tool2);
+} else if (title === 'home') {
+    document.getElementById("registration-form").onsubmit = function() {
+        return validateForm();
+    };
+}
+
+
+
+

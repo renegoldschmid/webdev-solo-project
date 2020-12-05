@@ -16,11 +16,11 @@
     <script src="https://kit.fontawesome.com/6d1ab91439.js" crossorigin="anonymous"></script>
 
     <script>
-        let title = 'home';
+        let title = 'contents';
     </script>
 
     <!-- Page Title -->
-    <title>Home</title>
+    <title>The Simpsons Quote Viewer</title>
 </head>
 <body>
     <!-- Navigation -->
@@ -31,10 +31,10 @@
             <nav>
                 <ul>
                     <li>
-                        <a class="active" href="index.html">Home</a>
+                        <a href="index.html">Home</a>
                     </li>
                     <li>
-                        <a href="contents.html">Contents</a>
+                        <a class="active" href="contents.html">Contents</a>
                     </li>
                     <li>
                         <a href="about.html">About</a>
@@ -54,37 +54,40 @@
         <div class="header center">
             <img class="title-image" src="assets/images/the_simpsons_logo.png" alt="The Simpsons Logo" />
         </div>
-
-        <h1 class="heading center">Welcome to The Simpsons Quote Viewer!</h1>
-
-        <h2 class="sub-heading center">Register</h2>
-        <div class="form-container">
-            <form id="registration-form" name="registration-form" action="#" method="get">
-                <label for="firstname">
-                    First Name*
-                </label>
-                <input type="text" name="firstname" placeholder="Your first name..." class="form-input" />
-                <label for="lastname">
-                    Last Name*
-                </label>
-                <input type="text" name="lastname" placeholder="Your last name..." class="form-input" />
-                <label for="age">
-                    Age
-                </label>
-                <input type="number" name="age" min="13" max="99" value="18" class="form-input" />
-                <label for="email">
-                    E-Mail*
-                </label>
-                <input type="email" name="email" placeholder="Your e-mail..." class="form-input" />
-                <label for="password">
-                    Password*
-                </label>
-                <input type="password" name="password" placeholder="Enter a password..." class="form-input" />
-
-                <br />
-                <input id="submitBtn" class="btn" type="submit" value="Register" />
-            </form>
+        
+        <h1 class="heading center">Quote Viewer</h1>
+        <p>
+            <strong>How it works:</strong>
+        </p>
+        <p>
+            First, set an amount of quotes you want to fetch per request (= per click). You can fetch as often you want! Then select your favorite quotes. If things get messy, clear the list and fetch some new quotes. Have fun!
+        </p>
+        <br />
+        <label for="qoutes-count">Amount (1-10): </label>
+        <input type="number" id="quotes-count" name="quotes-count" min="1" max="10" value="5" />
+        <br />
+        <button class="btn" id="fetchDataBtn" aria-describedby="tooltip">Get Quotes!</button>
+        <div id="tooltip" class="tooltip" role="tooltip">
+            Give it a try!
+            <div class="arrow" data-popper-arrow></div>
         </div>
+
+        <button class="btn" id="clearDataBtn">Clear</button>
+        <div id="tooltip2" class="tooltip" role="tooltip">
+            Clear 'The Quotes List'
+            <div class="arrow" data-popper-arrow></div>
+        </div>
+        <section>
+            <div>
+                <h2 class="sub-heading">The Quotes List <i class="far fa-list-alt"></i></h2>
+                <span id="loading"></span>
+                <ul id="quotes-list" class="list"></ul>
+            </div>
+            <div>
+                <h2 class="sub-heading">Your Favorites <i class="fas fa-heart"></i></h2>
+                <ul id="favorites-list" class="list"></ul>
+            </div>
+        </section>
     </main>
     
     <div id="pushFooter"></div>

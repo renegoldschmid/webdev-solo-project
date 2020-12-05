@@ -1,3 +1,6 @@
+/* No Breakpoint for < 768px since the general styling is mobile first */
+
+/* Medium Resolution */
 @media (min-width: 768px) { 
     nav {
         position: relative;
@@ -23,5 +26,21 @@
 
     #show-menu:checked ~ nav ul {
         padding: 10px 0;
+    }
+
+    .title-image {
+        width: 50%;
+    }
+
+    /* Buttons */
+    .button-container {
+        display: flex;
+    }    
+}
+
+/* Large Devices */
+@media (min-width: 1200px) {
+    main {
+        max-width: 1440px;
     }
 }
