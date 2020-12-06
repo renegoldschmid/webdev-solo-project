@@ -42,9 +42,7 @@
                 </ul>
             </nav>
             <label for="show-menu" class="menu-icon">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
+                <i class="fas fa-bars"></i>
             </label>
         </div>
     </header>
@@ -55,16 +53,14 @@
             <img class="title-image" src="assets/images/the_simpsons_logo.png" alt="The Simpsons Logo" />
         </div>
         
-        <h1 class="heading center">Quote Viewer</h1>
+        <h1 class="heading center">The Quote Viewer</h1>
 
         <section>
-            <p>
-                <strong>How it works:</strong>
-            </p>
+            <h3 class="sub-heading">How it works:</h3>
             <p>
                 First, set an amount of quotes you want to fetch per request (= per click). You can fetch as often you want! Then select your favorite quotes. If things get messy, clear the list and fetch some new quotes. Have fun!
             </p>
-            <label for="qoutes-count">Amount (1-10): </label>
+            <label for="quotes-count">Amount (1-10): </label>
             <input type="number" id="quotes-count" name="quotes-count" min="1" max="10" value="5" />
             <br />
             <button class="btn" id="fetchDataBtn" aria-describedby="tooltip">Get Quotes!</button>
@@ -106,6 +102,6 @@
     <!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
 
     <!-- Custom Scripts -->
-    <script src="assets/javascript/main.js" type="module" async defer></script>
+    <script src="assets/javascript/main.js" type="module" async></script>
 </body>
 </html>

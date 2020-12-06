@@ -87,7 +87,15 @@ function greetUser() {
     const lastname = params.get('lastname');
 
     let greeting = document.getElementById('greeting');
-    greeting.textContent = 'Hello ' + firstname + ' ' + lastname + ', thanks for your registration!';
+    if (firstname !== null && lastname !== null) {
+        greeting.textContent = 'Hello ' + firstname + ' ' + lastname + ', thanks for your registration!';
+    } else {
+        let successMsg = document.getElementsByClassName("success")[0];
+        successMsg.parentNode.removeChild(successMsg);
+        greeting.classList.add("form-error");
+        greeting.textContent = "Don't try to cheat, you're not registered!";
+    }
+    
 }
 
 /* Popper.js Specific */

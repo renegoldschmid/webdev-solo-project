@@ -1,4 +1,13 @@
-/* General */
+/*
+#### Colors ####
+Font (White-ish): #fffafa;
+Font (Grey-Blue): #5b748c;
+
+Background (Dark): #354250;
+Backgroudn (Light): #708090;
+*/
+
+/* General Styling (Mobile first!) */
 *,
 *:before,
 *:after {
@@ -25,7 +34,7 @@ main {
 }
 
 header {
-    background-color: rgb(53, 66, 80);
+    background-color: #354250;
 }
 
 .heading {
@@ -67,11 +76,11 @@ p {
     padding: 0 0.5em;
     color: #fffafa;
     background-color: #708090;
-    border: 2px solid rgb(53, 66, 80);
+    border: 2px solid #354250;
 }
 
 .btn:hover {
-    background-color: rgb(53, 66, 80);
+    background-color: #354250;
     cursor: pointer;
 }
 
@@ -99,7 +108,7 @@ p {
 #loading {
     font-size: 1em;
     font-weight: 500;
-    color: #708090;
+    color: #5b748c;
 }
 
 /* Navigation */
@@ -157,14 +166,12 @@ nav ul li a.active {
 /* Menu Icon (Burger) */
 .menu-icon {
     margin: 4px 10px;
+    font-size: 2.2em;
     cursor: pointer;
 }
 
-.line {
-    width: 32px;
-    height: 4px;
-    margin: 7px 0;
-    background-color: #fffafa;
+.fa-bars {
+    color: #fffafa;
 }
 
 #show-menu {

@@ -42,9 +42,7 @@
                 </ul>
             </nav>
             <label for="show-menu" class="menu-icon">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
+                <i class="fas fa-bars"></i>
             </label>
         </div>
     </header>
@@ -63,23 +61,23 @@
                 <label for="firstname">
                     First Name*
                 </label>
-                <input type="text" name="firstname" placeholder="Your first name..." class="form-input" />
+                <input type="text" id="firstname" name="firstname" placeholder="Your first name..." class="form-input" />
                 <label for="lastname">
                     Last Name*
                 </label>
-                <input type="text" name="lastname" placeholder="Your last name..." class="form-input" />
+                <input type="text" id="lastname" name="lastname" placeholder="Your last name..." class="form-input" />
                 <label for="age">
                     Age
                 </label>
-                <input type="number" name="age" min="13" max="99" class="form-input" />
+                <input type="number" id="age" name="age" min="13" max="99" class="form-input" />
                 <label for="email">
                     E-Mail*
                 </label>
-                <input type="email" name="email" placeholder="Your e-mail..." class="form-input" />
+                <input type="email" id="email" name="email" placeholder="Your e-mail..." class="form-input" />
                 <label for="password">
                     Password* (min. 8 characters)
                 </label>
-                <input type="password" name="password" placeholder="Enter a password..." class="form-input" />
+                <input type="password" id="password" name="password" placeholder="Enter a password..." class="form-input" />
                 <div class="center">
                     <input id="submitBtn" class="btn" type="submit" value="Register" />
                 </div>
@@ -101,6 +99,6 @@
     <!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
 
     <!-- Custom Scripts -->
-    <script src="assets/javascript/main.js" type="module" async defer></script>
+    <script src="assets/javascript/main.js" type="module" async></script>
 </body>
 </html>

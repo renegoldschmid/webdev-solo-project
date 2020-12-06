@@ -39,21 +39,23 @@ var app = (function() {
             fetch(URL)
                 .then(function(response) {
                     if(response.status !== 200){
-                        console.log("Error: " + response.status);
                         isLoading = toggleIsLoading(isLoading);
+                        // Error message
+                        let loadingContainer = document.getElementById("loading");
+                        loadingContainer.textContent = "Oops, something went wrong! (Status: " + response.status + ")";
                         return;
                     }
                     return response.json();
                 })
                 .then(function(responseData) {
-                    console.log('Request successful');
                     isLoading = toggleIsLoading(isLoading);
-                    console.log(responseData);
                     _processData(responseData);
                 })
                 .catch(function(error) {
-                    console.log('Request failed', error)
                     isLoading = toggleIsLoading(isLoading);
+                    // Error message
+                    let loadingContainer = document.getElementById("loading");
+                    loadingContainer.textContent = "Oops, something went wrong!";
                 });
         }
     }
