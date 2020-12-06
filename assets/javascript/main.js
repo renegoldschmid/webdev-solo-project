@@ -1,6 +1,6 @@
 console.log('René Goldschmid, Solo Web Engineering Project - Version 1.0');
 
-import { toggleIsLoading, registerTooltip, validateForm } from './support.js';
+import { toggleIsLoading, registerTooltip, greetUser, validateForm } from './support.js';
 import Tooltip from './tooltip.js';
 
 /*
@@ -114,7 +114,7 @@ var app = (function() {
         // Add Detail Button
         let detailBtn = document.createElement("button");
         detailBtn.textContent = "Details";
-        detailBtn.classList.add("btn", "btn-list");
+        detailBtn.classList.add("btn", "btn-list", "btn-detail");
         let btnContainer = clonedListItem.getElementsByClassName('button-container')[0];
         btnContainer.append(detailBtn);
 
@@ -159,7 +159,12 @@ var app = (function() {
     }
 }());
 
-if (title === 'contents') {
+if (title === 'home') {
+    document.getElementById("registration-form").onsubmit = function() {
+        return validateForm();
+    };
+
+} else if (title === 'contents') {
     document.getElementById("fetchDataBtn").addEventListener('click', function() {
         app.fetchDataFromApi();
     });
@@ -170,19 +175,14 @@ if (title === 'contents') {
 
     const button = document.querySelector('#fetchDataBtn');
     const tooltip = document.querySelector('#tooltip');
-    let tool1 = new Tooltip(button, tooltip);
+    let tool1 = new Tooltip(button, tooltip, 'top');
     registerTooltip(tool1);
 
     const button2 = document.querySelector('#clearDataBtn');
     const tooltip2 = document.querySelector('#tooltip2');
     let tool2 = new Tooltip(button2, tooltip2, 'right');
     registerTooltip(tool2);
-} else if (title === 'home') {
-    document.getElementById("registration-form").onsubmit = function() {
-        return validateForm();
-    };
+
+} else if (title === 'registered') {
+    greetUser();
 }
-
-
-
-

@@ -20,7 +20,7 @@
     </script>
 
     <!-- Page Title -->
-    <title>Home</title>
+    <title>TSQV | Home</title>
 </head>
 <body>
     <!-- Navigation -->
@@ -51,7 +51,7 @@
     
     <!-- Page Content -->
     <main>
-        <div class="header center">
+        <div class="image-container center">
             <img class="title-image" src="assets/images/the_simpsons_logo.png" alt="The Simpsons Logo" />
         </div>
 
@@ -59,7 +59,7 @@
 
         <h2 class="sub-heading center">Register</h2>
         <div class="form-container">
-            <form id="registration-form" name="registration-form" action="#" method="get">
+            <form id="registration-form" name="registration-form" action="registered.html" method="get">
                 <label for="firstname">
                     First Name*
                 </label>
@@ -71,26 +71,25 @@
                 <label for="age">
                     Age
                 </label>
-                <input type="number" name="age" min="13" max="99" value="18" class="form-input" />
+                <input type="number" name="age" min="13" max="99" class="form-input" />
                 <label for="email">
                     E-Mail*
                 </label>
                 <input type="email" name="email" placeholder="Your e-mail..." class="form-input" />
                 <label for="password">
-                    Password*
+                    Password* (min. 8 characters)
                 </label>
                 <input type="password" name="password" placeholder="Enter a password..." class="form-input" />
-
-                <br />
-                <input id="submitBtn" class="btn" type="submit" value="Register" />
+                <div class="center">
+                    <input id="submitBtn" class="btn" type="submit" value="Register" />
+                </div>
             </form>
         </div>
     </main>
-    
-    <div id="pushFooter"></div>
+
     <!-- Footer -->
     <footer>
-        <p>Copyright 2020 René Goldschmid. All rights reserved.</p>
+        <p>2020 - Made by René Goldschmid.</p>
     </footer>
 
     <!-- Load Scripts -->

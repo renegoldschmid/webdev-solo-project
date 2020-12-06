@@ -28,6 +28,10 @@
         padding: 10px 0;
     }
 
+    .image-container {
+        padding-bottom: 1em;
+    }
+
     .title-image {
         width: 50%;
     }
@@ -35,12 +39,42 @@
     /* Buttons */
     .button-container {
         display: flex;
-    }    
+    }
+
+    .btn-detail {
+        display: inline-block;
+    }
 }
 
 /* Large Devices */
 @media (min-width: 1200px) {
     main {
         max-width: 1440px;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+    }
+
+    .column:first-child {
+        padding-right: 1em;
+    }
+
+    .title-image {
+        width: 500px;
+    }
+
+    #loading {
+        font-size: 1.5em;
     }
 }

@@ -13,11 +13,15 @@ html {
 
 body {
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 main {
     margin: 0 auto;
-    padding: 1em 1em;
+    padding: 1em;
+    flex: 1;
 }
 
 header {
@@ -25,30 +29,30 @@ header {
 }
 
 .heading {
-    font-size: 2em;
+    font-size: 1.7em;
     font-weight: 700;
-    padding: 0.5em 0em;
+    padding-bottom: 0.5em;
 }
 
 .sub-heading {
     font-weight: 500;
-    padding: 0.5em 0em;
+    padding-bottom: 0.5em;
 }
 
 .center {
     text-align: center;
 }
 
-.header {
-    padding: 1em 0;
+.image-container {
+    padding-bottom: 0.5em;
 }
 
 .title-image {
-    width: 100%;
+    width: 80%;
 }
 
 p {
-    padding: 0.3em 0;
+    padding-bottom: 1em;
 }
 
 .fa-heart {
@@ -57,9 +61,9 @@ p {
 
 /* Buttons */
 .btn {
-    min-width: 80px;
+    min-width: 90px;
     height: 32px;
-    margin: 1em 0.3em 0 0;
+    margin: 1em 0.3em 1em 0;
     padding: 0 0.5em;
     color: #fffafa;
     background-color: #708090;
@@ -88,8 +92,12 @@ p {
     margin: 0.5em;
 }
 
+.btn-detail {
+    display: none;
+}
+
 #loading {
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: 500;
     color: #708090;
 }
@@ -169,6 +177,11 @@ nav ul li a.active {
 }
 
 /* App */
+input[name=quotes-count] {
+    padding: 0.3em 0 0.3em 0.5em;
+    border-radius: 4px;
+}
+
 .list {
     list-style-type: none;
 }
@@ -202,19 +215,31 @@ input.form-input {
 }
 
 .form-error {
+    display: block;
+    padding-bottom: 0.8em;
     color: rgb(187, 17, 17);
+}
+
+.success {
+    color: seagreen;
+}
+
+#greeting {
+    font-size: 1.5em;
 }
 
 /* Footer */
 footer {
-    position: fixed;
-    bottom: 0;
     height: 50px; /* If changed, also change pushFooter-Element */
     line-height: 50px;
     width: 100%;
     text-align: center;
     color: #fffafa;
     background-color: #708090;
+}
+
+footer p {
+    padding: 0;
 }
 
 #pushFooter {

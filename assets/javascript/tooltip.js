@@ -12,6 +12,7 @@ export default class Tooltip {
         this._direction = direction;
     }
 
+    // Create a tooltip instance
     createTooltip() {
         this.#popperInstance = Popper.createPopper(this.button, this.tooltipContainer, {
             placement: this.direction,
@@ -26,6 +27,7 @@ export default class Tooltip {
         });
     }
 
+    // Destroy tooltip (done for performance reasons)
     destroyTooltip() {
         if (this.#popperInstance) {
             this.#popperInstance.destroy();

@@ -46,15 +46,16 @@ function validateForm() {
     }
 
     if (email.value === "") {
-        // TODO: E-Mail validation
         shouldFocus = _tryToFocus(email, shouldFocus);
         _createErrorBelow(email, "Please enter your E-Mail!");
     }
 
     if (password.value === "") {
-        // TODO: password validation
         shouldFocus = _tryToFocus(password, shouldFocus);
         _createErrorBelow(password, "Please enter a password!");
+    } else if (password.value.length < 8) {
+        shouldFocus = _tryToFocus(password, shouldFocus);
+        _createErrorBelow(password, "Your password is too short!");
     }
 
     // If shouldFocus got changed, an error happened
@@ -79,25 +80,41 @@ function _createErrorBelow(target, message) {
     target.parentNode.insertBefore(errorLabel, target.nextSibling);
 }
 
+function greetUser() {
+    const query = window.location.search;
+    const params = new URLSearchParams(query);
+    const firstname = params.get('firstname');
+    const lastname = params.get('lastname');
+
+    let greeting = document.getElementById('greeting');
+    greeting.textContent = 'Hello ' + firstname + ' ' + lastname + ', thanks for your registration!';
+}
+
 /* Popper.js Specific */
 // Register a new tooltip (adds Event Handlers)
 function registerTooltip(tooltip) {
     // Handle Show-Events
     tooltip.showEvents.forEach(event => {
         tooltip.button.addEventListener(event, function() {
-            tooltip.tooltipContainer.setAttribute('data-show', '');
-            tooltip.createTooltip();
+            let mqMin = window.matchMedia('(min-width: 768px)');
+            if (mqMin.matches) {
+                tooltip.tooltipContainer.setAttribute('data-show', '');
+                tooltip.createTooltip();
+            }
         });
     });
     
     // Handle Hide-Events
     tooltip.hideEvents.forEach(event => {
         tooltip.button.addEventListener(event, function() {
-            tooltip.tooltipContainer.removeAttribute('data-show');
-            tooltip.destroyTooltip();
+            let mqMin = window.matchMedia('(min-width: 768px)');
+            if (mqMin.matches) {
+                tooltip.tooltipContainer.removeAttribute('data-show');
+                tooltip.destroyTooltip();
+            }
         });
     });
 }
 
 // Exports
-export { toggleIsLoading, validateForm, registerTooltip };
+export { toggleIsLoading, validateForm, greetUser, registerTooltip };
